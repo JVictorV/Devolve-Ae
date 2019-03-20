@@ -1,0 +1,45 @@
+.emprestimos {
+	margin-top: 20px;
+	text-align: center;
+	width: 60vw;
+}
+
+@media only screen and (max-device-width: 768px) {
+	.emprestimos {
+		width: 95vw;
+	}
+}
+
+table {
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.no-prazo {
+	background: linear-gradient(to left, #52c234, #061700);
+}
+
+.hoje {
+	background: linear-gradient(to left, #c0c234, #151700);
+}
+
+.vencido {
+	background: linear-gradient(to left, #c23434, #170000);
+}
+
+th,
+td {
+	padding: 15px 0 15px 0;
+	background-color: rgba(255, 255, 255, 0.2);
+	color: black;
+	border-bottom: 1px solid black;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+thead {
+	background: linear-gradient(to left, #fff, #aaa);
+}

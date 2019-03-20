@@ -1,0 +1,36 @@
+.header-input {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+	flex-basis: 45%;
+}
+
+.header-input-name {
+	font-size: 22px;
+	color: #a43931;
+}
+
+.header-input-box {
+	font-family: inherit;
+	border: 0;
+	border-bottom: 2px solid #a43931;
+	width: 25vw;
+	font-size: inherit;
+	text-align: center;
+	background: transparent;
+	color: white;
+}
+
+@media only screen and (max-device-width: 768px) {
+	.header-input-box {
+		width: 75vw;
+	}
+	.header-input {
+		flex-basis: 100%;
+	}
+}
+
+.header-input-box:focus {
+	outline: 0;
+}

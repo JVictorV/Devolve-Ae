@@ -1,28 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { view } from 'react-easy-state';
 import './App.css';
+import Header from './components/Header/Header';
+import Table from './components/Table/Table';
+import Store from './store';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+	componentDidMount() {
+		const ls = localStorage.getItem('emprestimos');
+
+		if (ls) {
+			const parsed = JSON.parse(ls);
+			const cleaned = parsed.map(x => {
+				const clone = { ...x };
+				clone.dataEmprestimo = new Date(clone.dataEmprestimo);
+				clone.dataDevolucao = new Date(clone.dataDevolucao);
+				return clone;
+			});
+			const biggestID = Math.max(...cleaned.map(x => x.id));
+			Store.emprestimos = cleaned;
+
+			if (biggestID && biggestID > 0) {
+				Store.id = biggestID;
+			}
+		}
+	}
+
+	render() {
+		return (
+			<div className='App'>
+				<Header />
+				<Table />
+			</div>
+		);
+	}
 }
 
-export default App;
+export default view(App);
