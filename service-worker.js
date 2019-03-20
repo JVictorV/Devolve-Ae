@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Devolve-Ae/precache-manifest.506c5bd190ee663f43567e785a6d295e.js"
+  "/Devolve-Ae/precache-manifest.dbfdb89547a0897298fb758962731fb6.js"
 );
 
 workbox.clientsClaim();
