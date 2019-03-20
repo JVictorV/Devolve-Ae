@@ -2,10 +2,16 @@ import React, { Component } from 'react';
 import { view } from 'react-easy-state';
 import './App.css';
 import Header from './components/Header/Header';
-import Table from './components/Table/Table';
+import TableIncompletos from './components/Table/TableIncompletos';
+import TableCompletos from './components/Table/TableCompletos';
 import Store from './store';
+import CheckBox from './components/CheckBox/CheckBox';
 
 class App extends Component {
+	state = {
+		checked: false
+	};
+
 	componentDidMount() {
 		const ls = localStorage.getItem('emprestimos');
 
@@ -20,17 +26,24 @@ class App extends Component {
 			const biggestID = Math.max(...cleaned.map(x => x.id));
 			Store.emprestimos = cleaned;
 
-			if (biggestID && biggestID > 0) {
-				Store.id = biggestID;
+			if (biggestID >= 0) {
+				Store.id = biggestID + 1;
 			}
 		}
 	}
 
+	switchState = () => {
+		const { checked } = this.state;
+		this.setState({ checked: !checked });
+	};
+
 	render() {
+		const { checked } = this.state;
 		return (
 			<div className='App'>
 				<Header />
-				<Table />
+				<CheckBox onClick={this.switchState} />
+				{checked ? <TableCompletos /> : <TableIncompletos />}
 			</div>
 		);
 	}

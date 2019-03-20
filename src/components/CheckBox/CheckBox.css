@@ -1,0 +1,19 @@
+.checkbox {
+	padding: 5px 5px 5px 5px;
+	margin-top: 10px;
+	background-color: #a43931;
+	color: white;
+	border-radius: 3px;
+}
+
+.checkbox-input {
+	border: 0;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	margin-top: -1px;
+}
+
+.checkbox-title {
+	font-size: 18px;
+}

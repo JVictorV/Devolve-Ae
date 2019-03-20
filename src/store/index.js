@@ -25,7 +25,8 @@ const Store = store({
 			objeto,
 			pessoa,
 			dataEmprestimo,
-			dataDevolucao
+			dataDevolucao,
+			devolvido: false
 		});
 
 		Store.id += 1;
@@ -35,6 +36,17 @@ const Store = store({
 		Store.dataDevolucao = null;
 
 		localStorage.setItem('emprestimos', JSON.stringify(Store.emprestimos));
+	},
+
+	devolverEmprestado(id) {
+		const el = Store.emprestimos.find(x => x.id === id);
+		if (el) {
+			el.devolvido = true;
+			localStorage.setItem(
+				'emprestimos',
+				JSON.stringify(Store.emprestimos)
+			);
+		}
 	},
 
 	removeEmprestimo(id) {
