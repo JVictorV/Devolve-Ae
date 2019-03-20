@@ -1,11 +1,12 @@
 import { store } from 'react-easy-state';
+import Moment from 'moment';
 
 const calcularDiferencaDias = (dataEmprestimo, dataDevolucao) => {
 	const d1 = dataEmprestimo.getTime();
 	const d2 = dataDevolucao.getTime();
-	const day = 24 * 60 * 60 * 1000;
-	const diff = d2 - d1;
-	const result = Math.round(diff / day);
+	const date1 = Moment(d1).startOf('day');
+	const date2 = Moment(d2).startOf('day');
+	const result = date2.diff(date1, 'days');
 
 	return result;
 };
